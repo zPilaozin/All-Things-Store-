@@ -1,5 +1,3 @@
-# All-Things-Store-
-REVENDA CACAU SHOW
 # 🍫 All Things Store
 
 Landing page de uma loja de chocolates artesanais, desenvolvida com HTML, CSS e JavaScript puros.
@@ -44,6 +42,11 @@ all-things-store/
 
 ## 📝 Licença
 
+Projeto de estudo. Livre para uso e modificação.
+
+---
+
+Desenvolvido por [Seu Nome](https://github.com/seu-usuario)
 Projeto de estudo. Livre para uso e modificação.
 
 ---
