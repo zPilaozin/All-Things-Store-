@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="All Things Store - Os melhores chocolates artesanais com entrega rápida.">
+  <meta name="author" content="Seu Nome">
+
+  <meta property="og:title" content="All Things Store - Chocolates Artesanais">
+  <meta property="og:description" content="Os melhores chocolates com entrega rápida">
+  <meta property="og:type" content="website">
+
+  <title>All Things Store - Chocolates Artesanais</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>All Things Store</h1>
+  <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <nav aria-label="Navegação principal">
+    <a href="#inicio">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#promocoes">Promoções</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <h2>Chocolate que derrete na boca 🍫🔥</h2>
+    <p>Os melhores sabores com entrega rápida</p>
+    <a href="#produtos" class="btn">Comprar agora</a>
+  </section>
+
+  <section class="products" id="produtos" aria-label="Nossos produtos">
+    <article class="card">
+      <img src="assets/img/chocolate-ao-leite.jpg" alt="Barra de chocolate ao leite artesanal" loading="lazy">
+      <h3>Chocolate ao leite</h3>
+      <p class="price">R$ 9,90</p>
+      <button type="button" class="btn" data-product="Chocolate ao leite" aria-label="Adicionar Chocolate ao leite ao carrinho">Adicionar</button>
+    </article>
+
+    <article class="card">
+      <img src="assets/img/chocolate-meio-amargo.jpg" alt="Barra de chocolate meio amargo 70% cacau" loading="lazy">
+      <h3>Chocolate meio amargo</h3>
+      <p class="price">R$ 12,90</p>
+      <button type="button" class="btn" data-product="Chocolate meio amargo" aria-label="Adicionar Chocolate meio amargo ao carrinho">Adicionar</button>
+    </article>
+
+    <article class="card">
+      <img src="assets/img/trufa-especial.jpg" alt="Trufa especial de chocolate belga" loading="lazy">
+      <h3>Trufa especial</h3>
+      <p class="price">R$ 6,90</p>
+      <button type="button" class="btn" data-product="Trufa especial" aria-label="Adicionar Trufa especial ao carrinho">Adicionar</button>
+    </article>
+  </section>
+
+  <section class="promo" id="promocoes">
+    <h2>🔥 Oferta especial</h2>
+    <p>Compre 3 e leve 1 grátis!</p>
+    <a href="#produtos" class="btn">Aproveitar agora</a>
+  </section>
+
+  <section class="benefits" aria-label="Nossos diferenciais">
+    <div class="benefit">
+      <h3>🚚 Entrega rápida</h3>
+      <p>Receba em poucos dias</p>
+    </div>
+    <div class="benefit">
+      <h3>💳 Pagamento seguro</h3>
+      <p>Seus dados protegidos</p>
+    </div>
+    <div class="benefit">
+      <h3>🍫 Alta qualidade</h3>
+      <p>Produtos selecionados</p>
+    </div>
+  </section>
+</main>
+
+<footer id="contato">
+  <p>© 2026 All Things Store - Todos os direitos reservados</p>
+  <p>Contato: contato@allthingsstore.com</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="cart-badge" aria-label="Itens no carrinho">🛒 <span id="cartCount">0</span></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
