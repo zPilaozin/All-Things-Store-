@@ -3,26 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Things Store | Chocolates Premium</title>
-<meta name="description" content="All Things Store - Chocolates Cacau Show em Mogi das Cruzes. Qualidade premium, entrega rápida.">
-<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- SEO TÉCNICO (PDF Fase 2) -->
+<title>All Things Store | Cacau Show Premium em Mogi das Cruzes - SP</title>
+<meta name="description" content="Revendedora oficial Cacau Show em Mogi das Cruzes. +140 produtos premium: bombons, trufas, tabletes e kits. Entrega rápida pelo WhatsApp!">
+<meta name="keywords" content="cacau show mogi das cruzes, chocolate mogi, revendedor cacau show, bombons mogi, presente chocolate">
+<meta name="author" content="All Things Store">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://zpilaozin.github.io/All-Things-Store-/">
+
+<!-- OPEN GRAPH (compartilhamento WhatsApp/Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zpilaozin.github.io/All-Things-Store-/">
+<meta property="og:title" content="All Things Store | Cacau Show Premium - Mogi das Cruzes">
+<meta property="og:description" content="Revendedora oficial Cacau Show. +140 produtos premium, entrega rápida pelo WhatsApp!">
+<meta property="og:image" content="https://i.ibb.co/h1Xsnsf3/gemini-2-5-flash-image-Tire-os-texto-das-fotos-e-coloque-algumas-no-lugas-dos-bobom-plus-ns-0.jpg">
+<meta property="og:locale" content="pt_BR">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="All Things Store | Cacau Show Premium">
+<meta name="twitter:description" content="+140 produtos Cacau Show em Mogi das Cruzes. Entrega rápida!">
+<meta name="twitter:image" content="https://i.ibb.co/h1Xsnsf3/gemini-2-5-flash-image-Tire-os-texto-das-fotos-e-coloque-algumas-no-lugas-dos-bobom-plus-ns-0.jpg">
+
+<!-- FAVICON -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
+
+<!-- JSON-LD SCHEMA: LocalBusiness + Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "All Things Store",
+  "image": "https://i.ibb.co/h1Xsnsf3/gemini-2-5-flash-image-Tire-os-texto-das-fotos-e-coloque-algumas-no-lugas-dos-bobom-plus-ns-0.jpg",
+  "description": "Revendedora oficial Cacau Show em Mogi das Cruzes com +140 produtos premium",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mogi das Cruzes",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "telephone": "+5511940277555",
+  "url": "https://zpilaozin.github.io/All-Things-Store-/",
+  "sameAs": [
+    "https://www.instagram.com/store_all.things/",
+    "https://wa.me/5511940277555"
+  ],
+  "priceRange": "R$ 1,39 - R$ 274,86",
+  "servesCuisine": "Chocolates",
+  "paymentAccepted": "PIX, Cartão, Dinheiro"
+}
+</script>
+
+<!-- FONTS COM PRELOAD -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- TAILWIND CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
 <style>
   * { scroll-behavior: smooth; }
-  body { font-family: 'Poppins', sans-serif; background: #1a0f08; color: #f5e6d3; margin: 0; }
+  body { font-family: 'Poppins', sans-serif; background: #0f0704; color: #f5e6d3; margin: 0; overflow-x: hidden; }
   .font-elegant { font-family: 'Playfair Display', serif; }
   
-  /* PALETA ELEGANTE */
-  .bg-dark-choco { background: #1a0f08; }
-  .bg-choco { background: #3e1f0d; }
-  .bg-cream { background: #f5e6d3; }
+  /* PALETA */
+  .bg-dark-choco { background: #0f0704; }
+  .bg-choco { background: #1a0f08; }
   .text-gold { color: #d4a574; }
   .text-gold-light { color: #e8c89a; }
   .bg-gold { background: #d4a574; }
-  .border-gold { border-color: #d4a574; }
-  .hover-gold:hover { color: #d4a574; transition: 0.3s; }
   
-  /* MENU FLUTUANTE */
+  /* ACESSIBILIDADE - Focus states (WCAG AA) */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #d4a574;
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+  
+  /* PREFERS REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* GLOW ORBS ANIMADOS (do PDF: glow orbs) */
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 1;
+    animation: float 20s infinite ease-in-out;
+  }
+  .orb-1 { width: 500px; height: 500px; background: #d4a574; top: 5%; left: -150px; }
+  .orb-2 { width: 400px; height: 400px; background: #8b4513; bottom: 15%; right: -100px; animation-delay: -7s; }
+  .orb-3 { width: 350px; height: 350px; background: #b8894f; top: 50%; left: 50%; animation-delay: -13s; }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(80px, -50px) scale(1.1); }
+    50% { transform: translate(-40px, 80px) scale(0.95); }
+    75% { transform: translate(50px, 40px) scale(1.05); }
+  }
+  
+  /* GLASSMORPHISM MENU (do PDF: glassmorphism) */
   .menu-float {
     position: absolute;
     top: 30px;
@@ -32,21 +121,47 @@
     display: flex;
     gap: 40px;
     padding: 15px 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(26, 15, 8, 0.2);
+    border: 1px solid rgba(212, 165, 116, 0.15);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+  }
+  .menu-float.scrolled {
+    position: fixed;
+    top: 15px;
+    background: rgba(15, 7, 4, 0.85);
+    border-color: rgba(212, 165, 116, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
   .menu-float a {
     color: #f5e6d3;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     transition: 0.3s;
+    position: relative;
   }
   .menu-float a:hover { color: #d4a574; }
+  .menu-float a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #d4a574;
+    transition: width 0.3s;
+  }
+  .menu-float a:hover::after { width: 100%; }
   
   @media (max-width: 640px) {
-    .menu-float { gap: 15px; padding: 10px 15px; top: 20px; }
-    .menu-float a { font-size: 12px; letter-spacing: 1px; }
+    .menu-float { gap: 12px; padding: 10px 20px; top: 15px; }
+    .menu-float a { font-size: 11px; letter-spacing: 1px; }
   }
   
   /* HERO */
@@ -61,7 +176,12 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.75);
+    filter: brightness(0.65);
+    animation: heroZoom 25s infinite alternate ease-in-out;
+  }
+  @keyframes heroZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
   }
   .hero-title {
     position: absolute;
@@ -71,36 +191,75 @@
     text-align: center;
     z-index: 10;
     width: 90%;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translate(-50%, -30%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
   }
   .hero-title h1 {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     color: #d4a574;
     font-size: clamp(3rem, 10vw, 8rem);
-    text-shadow: 3px 3px 20px rgba(0,0,0,0.8);
+    text-shadow: 3px 3px 30px rgba(0,0,0,0.9);
     letter-spacing: 2px;
     line-height: 0.95;
+    background: linear-gradient(135deg, #d4a574 0%, #f5e6d3 50%, #d4a574 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .hero-btn {
     margin-top: 40px;
     display: inline-block;
     background: linear-gradient(135deg, #d4a574, #b8894f);
     color: #1a0f08;
-    padding: 16px 40px;
+    padding: 18px 45px;
     border-radius: 50px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 14px;
-    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
-    transition: 0.3s;
+    box-shadow: 0 10px 40px rgba(212, 165, 116, 0.4);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
   }
-  .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 165, 116, 0.6); }
+  .hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.6s;
+  }
+  .hero-btn:hover::before { left: 100%; }
+  .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(212, 165, 116, 0.6); }
+  
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #d4a574;
+    font-size: 30px;
+    animation: bounce 2s infinite;
+    z-index: 10;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
   
   /* BALDE ANIMADO */
   .balde-container {
     position: fixed;
-    top: 80px;
+    top: 90px;
     left: 20px;
     z-index: 40;
     pointer-events: none;
@@ -108,7 +267,7 @@
   .balde {
     font-size: 48px;
     transform: rotate(-25deg);
-    filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));
+    filter: drop-shadow(2px 2px 12px rgba(212, 165, 116, 0.5));
   }
   .choco-drop {
     position: absolute;
@@ -128,6 +287,37 @@
   .c4 { top: 30px; left: 30px; animation-delay: 1.8s; font-size: 22px; }
   .c5 { top: 30px; left: 30px; animation-delay: 2.4s; font-size: 26px; }
   
+  /* SOCIAL PROOF BAR */
+  .social-proof {
+    background: linear-gradient(90deg, rgba(212, 165, 116, 0.05), rgba(212, 165, 116, 0.15), rgba(212, 165, 116, 0.05));
+    border-top: 1px solid rgba(212, 165, 116, 0.2);
+    border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+    padding: 30px 20px;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* CONTADOR ANIMADO */
+  .counter {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #d4a574;
+    background: linear-gradient(135deg, #d4a574, #f5e6d3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* SCROLL REVEAL (do PDF: scroll reveals) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
   /* SEÇÕES */
   .section-title {
     font-family: 'Playfair Display', serif;
@@ -137,6 +327,14 @@
     font-weight: 700;
     margin-bottom: 20px;
   }
+  .section-subtitle {
+    text-align: center;
+    color: #d4a574;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
   .divider {
     width: 80px;
     height: 3px;
@@ -144,20 +342,33 @@
     margin: 0 auto 50px;
   }
   
-  /* CARDS PRODUTO */
+  /* CARDS COM TILT 3D */
   .product-card {
-    background: linear-gradient(135deg, #2a1810, #3e1f0d);
-    border: 1px solid rgba(212, 165, 116, 0.3);
+    background: linear-gradient(135deg, rgba(42, 24, 16, 0.8), rgba(62, 31, 13, 0.8));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 165, 116, 0.2);
     border-radius: 20px;
     overflow: hidden;
-    transition: 0.4s;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
   .product-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px) rotateX(2deg);
     border-color: #d4a574;
-    box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
+    box-shadow: 0 25px 50px rgba(212, 165, 116, 0.25);
   }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    opacity: 0;
+    transition: 0.5s;
+  }
+  .product-card:hover::before { opacity: 1; }
   .product-placeholder {
     height: 220px;
     background: linear-gradient(135deg, #6b3410, #3e1f0d);
@@ -165,19 +376,70 @@
     align-items: center;
     justify-content: center;
     font-size: 80px;
+    position: relative;
+  }
+  .product-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(212, 165, 116, 0.15), transparent 70%);
   }
   .tag-novo {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #d4a574;
+    background: linear-gradient(135deg, #d4a574, #b8894f);
     color: #1a0f08;
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1px;
     z-index: 2;
+    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+  }
+  
+  /* BOTÕES CTA SECUNDÁRIOS */
+  .btn-outline {
+    display: inline-block;
+    color: #d4a574;
+    border: 1px solid #d4a574;
+    padding: 14px 32px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .btn-outline:hover {
+    background: #d4a574;
+    color: #0f0704;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+  }
+  
+  /* FEATURE CARDS */
+  .feature-card {
+    text-align: center;
+    padding: 40px 30px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(62, 31, 13, 0.6), rgba(42, 24, 16, 0.6));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 165, 116, 0.15);
+    transition: 0.5s;
+  }
+  .feature-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 165, 116, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  .feature-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  .feature-card:hover .feature-icon {
+    transform: scale(1.15) rotate(5deg);
   }
   
   /* WHATSAPP FLOAT */
@@ -189,20 +451,30 @@
     color: white;
     padding: 16px;
     border-radius: 50%;
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
     z-index: 100;
     animation: pulse 2s infinite;
+    transition: 0.3s;
   }
+  .wpp-float:hover { transform: scale(1.1); }
   @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5); }
+    50% { transform: scale(1.08); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.7); }
   }
+  
+  /* CONTENT LAYERING */
+  section { position: relative; z-index: 2; }
 </style>
 </head>
 <body>
 
-<!-- BALDE ANIMADO FIXO -->
-<div class="balde-container">
+<!-- GLOW ORBS (do PDF) -->
+<div class="glow-orb orb-1" aria-hidden="true"></div>
+<div class="glow-orb orb-2" aria-hidden="true"></div>
+<div class="glow-orb orb-3" aria-hidden="true"></div>
+
+<!-- BALDE ANIMADO -->
+<div class="balde-container" aria-hidden="true">
   <div class="balde">🪣</div>
   <div class="choco-drop c1">🍫</div>
   <div class="choco-drop c2">🍬</div>
@@ -211,12 +483,12 @@
   <div class="choco-drop c5">🍫</div>
 </div>
 
-<!-- HERO COM MENU FLUTUANTE -->
-<section id="inicio" class="hero">
-  <div class="hero-image" style="background-image: url('https://i.ibb.co/h1Xsnsf3/gemini-2-5-flash-image-Tire-os-texto-das-fotos-e-coloque-algumas-no-lugas-dos-bobom-plus-ns-0.jpg');"></div>
+<!-- HERO COM MENU GLASSMORPHISM -->
+<header id="inicio" class="hero" role="banner">
+  <div class="hero-image" style="background-image: url('https://i.ibb.co/h1Xsnsf3/gemini-2-5-flash-image-Tire-os-texto-das-fotos-e-coloque-algumas-no-lugas-dos-bobom-plus-ns-0.jpg');" role="img" aria-label="Chocolates Cacau Show premium"></div>
   
-  <!-- MENU FLUTUANTE -->
-  <nav class="menu-float">
+  <!-- MENU FLUTUANTE COM GLASSMORPHISM -->
+  <nav class="menu-float" id="mainNav" role="navigation" aria-label="Menu principal">
     <a href="#inicio">Início</a>
     <a href="produtos.html">Produtos</a>
     <a href="produtos.html">Kits</a>
@@ -226,125 +498,143 @@
   <!-- TÍTULO CENTRAL -->
   <div class="hero-title">
     <h1>All Things<br>Store</h1>
-    <a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20quero%20ver%20o%20cat%C3%A1logo" class="hero-btn">
+    <a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20quero%20ver%20o%20cat%C3%A1logo" class="hero-btn" aria-label="Ver catálogo no WhatsApp">
       🍫 Ver Catálogo
     </a>
+  </div>
+  
+  <!-- SCROLL INDICATOR -->
+  <div class="scroll-indicator" aria-hidden="true">↓</div>
+</header>
+
+<!-- SOCIAL PROOF BAR (do PDF: social proof) -->
+<section class="social-proof reveal" aria-label="Indicadores de confiança">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <div class="counter" data-target="140">0+</div>
+      <p class="text-gold-light text-xs uppercase tracking-widest mt-2">Produtos</p>
+    </div>
+    <div>
+      <div class="counter" data-target="500">0+</div>
+      <p class="text-gold-light text-xs uppercase tracking-widest mt-2">Clientes Felizes</p>
+    </div>
+    <div>
+      <div class="counter" data-target="2">0h</div>
+      <p class="text-gold-light text-xs uppercase tracking-widest mt-2">Entrega Rápida</p>
+    </div>
+    <div>
+      <div class="text-3xl md:text-4xl font-elegant text-gold">⭐ 4.9</div>
+      <p class="text-gold-light text-xs uppercase tracking-widest mt-2">Avaliação</p>
+    </div>
   </div>
 </section>
 
 <!-- CAMPANHA MÃES -->
-<section id="campanha-maes" class="py-24 px-6 bg-dark-choco relative overflow-hidden">
+<section id="campanha-maes" class="py-24 px-6 bg-dark-choco reveal" aria-labelledby="titulo-maes">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-4">
-      <span class="text-gold text-sm tracking-widest uppercase">💝 Edição Especial</span>
-    </div>
-    <h2 class="section-title">Campanha Dia das Mães</h2>
+    <p class="section-subtitle">💝 Edição Especial</p>
+    <h2 id="titulo-maes" class="section-title">Campanha Dia das Mães</h2>
     <div class="divider"></div>
     <p class="text-center text-gold-light mb-16 max-w-2xl mx-auto">
       Presentes únicos para quem merece o mundo. Caixas especiais, embalagens exclusivas e o sabor inesquecível da Cacau Show.
     </p>
     
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="product-card">
-        <div class="product-placeholder">🎁</div>
+      <article class="product-card">
+        <div class="product-placeholder"><span aria-hidden="true">🎁</span></div>
         <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Produto em Breve</h3>
-          <p class="text-gold-light text-sm mb-4">Aguarde novidades especiais</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar disponibilidade →</a>
+          <h3 class="font-elegant text-2xl text-gold mb-2">Caixa Artesanal</h3>
+          <p class="text-gold-light text-sm mb-4">Delícias de Amor 153g</p>
+          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
         </div>
-      </div>
-      <div class="product-card">
-        <div class="product-placeholder">💝</div>
+      </article>
+      <article class="product-card">
+        <div class="product-placeholder"><span aria-hidden="true">💝</span></div>
         <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Produto em Breve</h3>
-          <p class="text-gold-light text-sm mb-4">Aguarde novidades especiais</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar disponibilidade →</a>
+          <h3 class="font-elegant text-2xl text-gold mb-2">Caixa Angel Premium</h3>
+          <p class="text-gold-light text-sm mb-4">Coleção Sortidos 290g</p>
+          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
         </div>
-      </div>
-      <div class="product-card">
-        <div class="product-placeholder">🌹</div>
+      </article>
+      <article class="product-card">
+        <div class="product-placeholder"><span aria-hidden="true">🌹</span></div>
         <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Produto em Breve</h3>
-          <p class="text-gold-light text-sm mb-4">Aguarde novidades especiais</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar disponibilidade →</a>
+          <h3 class="font-elegant text-2xl text-gold mb-2">Botão de Rosa</h3>
+          <p class="text-gold-light text-sm mb-4">Bombom recheado Angel</p>
+          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
         </div>
-      </div>
+      </article>
     </div>
     
     <div class="text-center mt-12">
-      <a href="produtos.html" class="inline-block text-gold border border-gold px-8 py-3 rounded-full hover:bg-gold hover:text-dark-choco transition" style="transition: all 0.3s;">
-        Ver todos os produtos de Mães →
-      </a>
+      <a href="produtos.html" class="btn-outline">Ver todos os produtos de Mães →</a>
     </div>
   </div>
 </section>
 
 <!-- NOVIDADES -->
-<section id="novidades" class="py-24 px-6 bg-choco">
+<section id="novidades" class="py-24 px-6 bg-choco reveal" aria-labelledby="titulo-novidades">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-4">
-      <span class="text-gold text-sm tracking-widest uppercase">✨ Recém-chegados</span>
-    </div>
-    <h2 class="section-title">Novidades</h2>
+    <p class="section-subtitle">✨ Recém-chegados</p>
+    <h2 id="titulo-novidades" class="section-title">Novidades</h2>
     <div class="divider"></div>
     
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="product-card">
+      <article class="product-card">
         <span class="tag-novo">NOVO</span>
-        <div class="product-placeholder">🍫</div>
+        <div class="product-placeholder"><span aria-hidden="true">🪄</span></div>
         <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Produto em Breve</h3>
-          <p class="text-gold-light text-sm mb-4">Aguarde novidades</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar disponibilidade →</a>
+          <h3 class="font-elegant text-2xl text-gold mb-2">Linha Harry Potter</h3>
+          <p class="text-gold-light text-sm mb-4">25 anos - Edição limitada</p>
+          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
         </div>
-      </div>
-      <div class="product-card">
+      </article>
+      <article class="product-card">
         <span class="tag-novo">NOVO</span>
-        <div class="product-placeholder">🍬</div>
+        <div class="product-placeholder"><span aria-hidden="true">🎫</span></div>
         <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Produto em Breve</h3>
-          <p class="text-gold-light text-sm mb-4">Aguarde novidades</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar disponibilidade →</a>
+          <h3 class="font-elegant text-2xl text-gold mb-2">Dreams Premiado</h3>
+          <p class="text-gold-light text-sm mb-4">Cacau Park - Bilhete premiado</p>
+          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
         </div>
-      </div>
-      <div class="product-card">
+      </article>
+      <article class="product-card">
         <span class="tag-novo">NOVO</span>
-        <div class="product-placeholder">🍩</div>
+        <div class="product-placeholder"><span aria-hidden="true">🌿</span></div>
         <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Produto em Breve</h3>
-          <p class="text-gold-light text-sm mb-4">Aguarde novidades</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar disponibilidade →</a>
+          <h3 class="font-elegant text-2xl text-gold mb-2">LaNut Pistache Dubai</h3>
+          <p class="text-gold-light text-sm mb-4">Creme de pistache e kataifi</p>
+          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
         </div>
-      </div>
+      </article>
     </div>
     
     <div class="text-center mt-12">
-      <a href="produtos.html" class="inline-block text-gold border border-gold px-8 py-3 rounded-full hover:bg-gold hover:text-dark-choco transition" style="transition: all 0.3s;">
-        Ver catálogo completo →
-      </a>
+      <a href="produtos.html" class="btn-outline">Ver catálogo completo →</a>
     </div>
   </div>
 </section>
 
-<!-- ENTREGA E PAGAMENTO -->
-<section class="py-24 px-6 bg-dark-choco">
+<!-- FEATURES (do PDF: Features + Como funciona) -->
+<section class="py-24 px-6 bg-dark-choco reveal" aria-labelledby="titulo-features">
   <div class="max-w-6xl mx-auto">
-    <h2 class="section-title">Por que escolher a All Things</h2>
+    <p class="section-subtitle">Por que nos escolher</p>
+    <h2 id="titulo-features" class="section-title">Experiência Premium</h2>
     <div class="divider"></div>
     
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="text-center p-8 rounded-2xl bg-choco border border-gold border-opacity-30">
-        <div class="text-6xl mb-4">🚚</div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🚚</div>
         <h3 class="font-elegant text-2xl text-gold mb-3">Entrega Rápida</h3>
         <p class="text-gold-light">Entregas em Mogi das Cruzes e região em até 2 horas.</p>
       </div>
-      <div class="text-center p-8 rounded-2xl bg-choco border border-gold border-opacity-30">
-        <div class="text-6xl mb-4">💳</div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">💳</div>
         <h3 class="font-elegant text-2xl text-gold mb-3">Pagamento Fácil</h3>
         <p class="text-gold-light">PIX, cartão ou dinheiro. A forma que for melhor pra você.</p>
       </div>
-      <div class="text-center p-8 rounded-2xl bg-choco border border-gold border-opacity-30">
-        <div class="text-6xl mb-4">⭐</div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">⭐</div>
         <h3 class="font-elegant text-2xl text-gold mb-3">Qualidade Premium</h3>
         <p class="text-gold-light">Produtos oficiais Cacau Show, fresquinhos e bem embalados.</p>
       </div>
@@ -352,51 +642,55 @@
   </div>
 </section>
 
-<!-- AVALIAÇÕES -->
-<section class="py-24 px-6 bg-choco">
+<!-- AVALIAÇÕES (do PDF: Social proof) -->
+<section class="py-24 px-6 bg-choco reveal" aria-labelledby="titulo-avaliacoes">
   <div class="max-w-6xl mx-auto">
-    <h2 class="section-title">O que nossos clientes dizem</h2>
+    <p class="section-subtitle">⭐ Depoimentos</p>
+    <h2 id="titulo-avaliacoes" class="section-title">O que nossos clientes dizem</h2>
     <div class="divider"></div>
     
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-8 bg-dark-choco rounded-2xl border border-gold border-opacity-20">
-        <div class="text-gold text-2xl mb-3">⭐⭐⭐⭐⭐</div>
+      <blockquote class="feature-card text-left">
+        <div class="text-gold text-2xl mb-3" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
         <p class="italic text-gold-light mb-4">"Atendimento top e chegou super rápido! Os bombons estavam frescos e deliciosos."</p>
-        <p class="font-elegant text-gold">— Juliana M.</p>
-      </div>
-      <div class="p-8 bg-dark-choco rounded-2xl border border-gold border-opacity-20">
-        <div class="text-gold text-2xl mb-3">⭐⭐⭐⭐⭐</div>
+        <cite class="font-elegant text-gold not-italic">— Juliana M.</cite>
+      </blockquote>
+      <blockquote class="feature-card text-left">
+        <div class="text-gold text-2xl mb-3" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
         <p class="italic text-gold-light mb-4">"Pedi presente de aniversário pra minha mãe. Ela amou a caixa, veio perfeita!"</p>
-        <p class="font-elegant text-gold">— Rafael C.</p>
-      </div>
-      <div class="p-8 bg-dark-choco rounded-2xl border border-gold border-opacity-20">
-        <div class="text-gold text-2xl mb-3">⭐⭐⭐⭐⭐</div>
+        <cite class="font-elegant text-gold not-italic">— Rafael C.</cite>
+      </blockquote>
+      <blockquote class="feature-card text-left">
+        <div class="text-gold text-2xl mb-3" aria-label="5 estrelas">⭐⭐⭐⭐⭐</div>
         <p class="italic text-gold-light mb-4">"Compro toda semana. Preço justo e sempre tem novidade. Recomendo demais!"</p>
-        <p class="font-elegant text-gold">— Ana P.</p>
-      </div>
+        <cite class="font-elegant text-gold not-italic">— Ana P.</cite>
+      </blockquote>
     </div>
   </div>
 </section>
 
-<!-- CONTATO -->
-<section id="contato" class="py-24 px-6 bg-dark-choco">
+<!-- CTA FINAL (do PDF: CTA final) -->
+<section id="contato" class="py-24 px-6 bg-dark-choco reveal" aria-labelledby="titulo-contato">
   <div class="max-w-4xl mx-auto text-center">
-    <h2 class="section-title">Fale Conosco</h2>
+    <p class="section-subtitle">📱 Entre em contato</p>
+    <h2 id="titulo-contato" class="section-title">Fale Conosco</h2>
     <div class="divider"></div>
-    <p class="text-gold-light mb-12 text-lg">Entre em contato e descubra todo o nosso catálogo.</p>
+    <p class="text-gold-light mb-12 text-lg">Entre em contato e descubra todo o nosso catálogo premium.</p>
     
     <div class="grid md:grid-cols-2 gap-6">
       <a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20vim%20pelo%20site" 
-         class="flex items-center justify-center gap-4 p-6 bg-choco rounded-2xl border border-gold border-opacity-30 hover:border-opacity-100 transition">
-        <div class="text-5xl">📱</div>
+         class="feature-card flex items-center justify-center gap-4"
+         aria-label="Contato via WhatsApp">
+        <div class="text-5xl" aria-hidden="true">📱</div>
         <div class="text-left">
           <p class="text-sm text-gold-light">WhatsApp</p>
           <p class="font-elegant text-2xl text-gold">(11) 94027-7555</p>
         </div>
       </a>
-      <a href="https://www.instagram.com/store_all.things/" target="_blank"
-         class="flex items-center justify-center gap-4 p-6 bg-choco rounded-2xl border border-gold border-opacity-30 hover:border-opacity-100 transition">
-        <div class="text-5xl">📸</div>
+      <a href="https://www.instagram.com/store_all.things/" target="_blank" rel="noopener noreferrer"
+         class="feature-card flex items-center justify-center gap-4"
+         aria-label="Contato via Instagram">
+        <div class="text-5xl" aria-hidden="true">📸</div>
         <div class="text-left">
           <p class="text-sm text-gold-light">Instagram</p>
           <p class="font-elegant text-2xl text-gold">@store_all.things</p>
@@ -407,23 +701,48 @@
 </section>
 
 <!-- RODAPÉ -->
-<footer class="py-12 px-6 bg-black text-center">
+<footer class="py-12 px-6 bg-black text-center" role="contentinfo">
   <h3 class="font-elegant text-3xl text-gold mb-2">All Things Store</h3>
   <p class="text-gold-light text-sm mb-4">Chocolates Cacau Show • Mogi das Cruzes - SP</p>
-  <div class="flex justify-center gap-6 mb-6">
+  <nav class="flex justify-center gap-6 mb-6" aria-label="Links do rodapé">
     <a href="https://wa.me/5511940277555" class="text-gold-light hover-gold">WhatsApp</a>
-    <a href="https://www.instagram.com/store_all.things/" target="_blank" class="text-gold-light hover-gold">Instagram</a>
+    <a href="https://www.instagram.com/store_all.things/" target="_blank" rel="noopener noreferrer" class="text-gold-light hover-gold">Instagram</a>
     <a href="produtos.html" class="text-gold-light hover-gold">Catálogo</a>
-  </div>
+  </nav>
   <p class="text-xs text-gold-light opacity-60">© 2026 All Things Store. Todos os direitos reservados.</p>
 </footer>
 
 <!-- WHATSAPP FLUTUANTE -->
-<a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20vim%20pelo%20site" class="wpp-float">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+<a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20vim%20pelo%20site" 
+   class="wpp-float" 
+   aria-label="Conversar no WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
 </a>
 
-</body>
-</html>
+<script>
+  // SCROLL REVEAL (do PDF: scroll reveals)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  
+  // MENU SCROLL (glassmorphism dinâmico)
+  const menu = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      menu.classList.add('scrolled');
+    } else {
+      menu.classList.remove('scrolled');
+    }
+  });
+  
+  // CONTADORES ANIMADOS
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribut
