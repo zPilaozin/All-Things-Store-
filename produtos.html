@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo | All Things Store</title>
+<meta name="description" content="Catálogo completo de chocolates Cacau Show - All Things Store Mogi das Cruzes">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; background: #1a0f08; color: #f5e6d3; margin: 0; }
+  .font-elegant { font-family: 'Playfair Display', serif; }
+  
+  .bg-dark-choco { background: #1a0f08; }
+  .bg-choco { background: #3e1f0d; }
+  .text-gold { color: #d4a574; }
+  .text-gold-light { color: #e8c89a; }
+  .bg-gold { background: #d4a574; }
+  
+  .header {
+    background: rgba(26, 15, 8, 0.95);
+    border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+    padding: 20px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  
+  .hero-catalog {
+    padding: 60px 20px 40px;
+    text-align: center;
+    background: linear-gradient(180deg, #1a0f08 0%, #2a1810 100%);
+  }
+  .hero-catalog h1 {
+    font-family: 'Playfair Display', serif;
+    color: #d4a574;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  
+  .search-bar {
+    max-width: 500px;
+    margin: 30px auto;
+    position: relative;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    background: rgba(212, 165, 116, 0.1);
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    border-radius: 50px;
+    color: #f5e6d3;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+  }
+  .search-bar input:focus { border-color: #d4a574; background: rgba(212, 165, 116, 0.15); }
+  .search-bar input::placeholder { color: rgba(245, 230, 211, 0.5); }
+  .search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d4a574;
+    font-size: 20px;
+  }
+  
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .filter-btn {
+    padding: 10px 24px;
+    background: transparent;
+    color: #e8c89a;
+    border: 1px solid rgba(212, 165, 116, 0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-size: 14px;
+  }
+  .filter-btn:hover { background: rgba(212, 165, 116, 0.1); border-color: #d4a574; }
+  .filter-btn.active {
+    background: linear-gradient(135deg, #d4a574, #b8894f);
+    color: #1a0f08;
+    border-color: #d4a574;
+    font-weight: 700;
+  }
+  .filter-btn.special {
+    border-color: #d4a574;
+    color: #d4a574;
+  }
+  
+  .contador {
+    text-align: center;
+    color: #d4a574;
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .product-card {
+    background: linear-gradient(135deg, #2a1810, #3e1f0d);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4a574;
+    box-shadow: 0 15px 35px rgba(212, 165, 116, 0.2);
+  }
+  .product-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #6b3410 0%, #3e1f0d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+    position: relative;
+  }
+  .product-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+  }
+  .product-info {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    color: #d4a574;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    min-height: 48px;
+    line-height: 1.3;
+  }
+  .product-desc {
+    color: rgba(245, 230, 211, 0.6);
+    font-size: 12px;
+    margin-bottom: 12px;
+    min-height: 30px;
+  }
+  .product-price {
+    color: #e8c89a;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .product-btn {
+    display: block;
+    background: linear-gradient(135deg, #25d366, #1eac52);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    font-size: 13px;
+  }
+  .product-btn:hover { transform: scale(1.05); }
+  
+  .tag-maes {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, #d4a574, #b8894f);
+    color: #1a0f08;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+  .tag-especial {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #8b1e1e;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+  
+  .empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #e8c89a;
+    grid-column: 1 / -1;
+  }
+  
+  .price-note {
+    text-align: center;
+    padding: 20px;
+    color: rgba(245, 230, 211, 0.6);
+    font-size: 13px;
+    font-style: italic;
+  }
+  
+  .wpp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    color: white;
+    padding: 16px;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    z-index: 100;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  footer {
+    background: black;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <a href="index.html" class="text-gold flex items-center gap-2 hover:opacity-80 transition">
+      <span class="text-xl">←</span>
+      <span class="hidden sm:inline">Voltar</span>
+    </a>
+    <h2 class="font-elegant text-gold text-xl md:text-2xl">All Things Store</h2>
+    <a href="https://wa.me/5511940277555" class="text-gold hover:opacity-80 transition">
+      <span class="hidden sm:inline">📱 WhatsApp</span>
+      <span class="sm:hidden">📱</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-catalog">
+  <h1>Catálogo Completo</h1>
+  <p class="text-gold-light mt-4 max-w-2xl mx-auto text-lg">
+    Explore nossa seleção premium de chocolates Cacau Show
+  </p>
+  
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar produto..." onkeyup="filtrarProdutos()">
+  </div>
+</section>
+
+<!-- FILTROS -->
+<div class="filters">
+  <button class="filter-btn active" onclick="filtrarCategoria('todos', this)">Todos</button>
+  <button class="filter-btn special" onclick="filtrarCategoria('maes', this)">💝 Mães</button>
+  <button class="filter-btn" onclick="filtrarCategoria('bombons', this)">🍬 Bombons</button>
+  <button class="filter-btn" onclick="filtrarCategoria('trufas', this)">🍫 Trufas</button>
+  <button class="filter-btn" onclick="filtrarCategoria('barras', this)">🍩 Barras</button>
+  <button class="filter-btn" onclick="filtrarCategoria('kits', this)">🎁 Kits</button>
+  <button class="filter-btn" onclick="filtrarCategoria('datas', this)">📅 Datas</button>
+</div>
+
+<div class="contador" id="contador"></div>
+
+<!-- GRID DE PRODUTOS -->
+<div class="products-grid" id="productsGrid"></div>
+
+<p class="price-note">
+  *Preços sujeitos a alteração. Confirme disponibilidade no WhatsApp.
+</p>
+
+<!-- FOOTER -->
+<footer>
+  <h3 class="font-elegant text-2xl text-gold mb-2">All Things Store</h3>
+  <p class="text-gold-light text-sm mb-4">Chocolates Cacau Show • Mogi das Cruzes - SP</p>
+  <div class="flex justify-center gap-6">
+    <a href="https://wa.me/5511940277555" class="text-gold-light hover:text-gold transition">WhatsApp</a>
+    <a href="https://www.instagram.com/store_all.things/" target="_blank" class="text-gold-light hover:text-gold transition">Instagram</a>
+    <a href="index.html" class="text-gold-light hover:text-gold transition">Início</a>
+  </div>
+  <p class="text-xs text-gold-light opacity-60 mt-4">© 2026 All Things Store.</p>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5511940277555" class="wpp-float">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+// ============================================
+// 📋 CATÁLOGO ALL THINGS STORE - ~100 PRODUTOS
+// Categorias: maes, bombons, trufas, barras, kits, datas
+// ============================================
+const produtos = [
+  
+  // ========== 💝 CAMPANHA MÃES / NAMORADOS (LINHA ANGEL) ==========
+  { nome: "Tabletes Angel", preco: 32.49, categoria: ["maes"], emoji: "💝", desc: "Caixa com 3 tabletes 90g" },
+  { nome: "Botão de Rosa Angel", preco: 21.29, categoria: ["maes"], emoji: "🌹", desc: "Bombom com recheio de brigadeiro" },
+  { nome: "Caixa Artesanal Delícias de Amor", preco: 67.99, categoria: ["maes", "bombons"], emoji: "💖", desc: "Bombons recheados 153g" },
+  { nome: "Lata Bombom Angel", preco: 39.49, categoria: ["maes", "bombons"], emoji: "❤️", desc: "Lata em formato coração 100g" },
+  { nome: "Minicubo Mezzo Angel", preco: 21.29, categoria: ["maes", "bombons"], emoji: "🎁", desc: "Drageados crocantes 70g" },
+  { nome: "Caixa Angel Porta-joias", preco: 79.99, categoria: ["maes", "kits"], emoji: "💎", desc: "Porta-joias com bombons 185g" },
+  { nome: "Caixa Angel Coleção Sortidos 290g", preco: 129.99, categoria: ["maes", "bombons"], emoji: "💝", desc: "Coleção premium de bombons" },
+  { nome: "Caixa Angel Coleção Sortidos 120g", preco: 64.99, categoria: ["maes", "bombons"], emoji: "💝", desc: "Coleção de bombons sortidos" },
+  { nome: "Caixa Corações Angel", preco: 26.99, categoria: ["maes", "bombons"], emoji: "💗", desc: "Bombons sabor frutas silvestres 75g" },
+  { nome: "Angel Gourmet", preco: 61.99, categoria: ["maes", "bombons"], emoji: "✨", desc: "Bombons geleia de morango e trufa 200g" },
+  { nome: "Cerejão", preco: 8.49, categoria: ["maes", "bombons"], emoji: "🍒", desc: "Bombom com cereja ao licor 23g" },
+  
+  // ========== 🍬 BOMBONS (CAIXAS SORTIDOS) ==========
+  { nome: "Caixa Clássicos Sortidos 120g", preco: 39.49, categoria: ["bombons"], emoji: "🍫", desc: "Trufa tradicional, avelã e cereja" },
+  { nome: "Caixa Clássicos Sortidos 160g", preco: 59.99, categoria: ["bombons"], emoji: "🍫", desc: "Bombons sortidos premium" },
+  { nome: "Caixa Clássicos Sortidos 360g", preco: 74.99, categoria: ["bombons"], emoji: "🍫", desc: "Caixa maior sortida" },
+  { nome: "Caixa Bombons Sortidos 240g", preco: 74.99, categoria: ["bombons"], emoji: "🎁", desc: "Bombons com trufa ao leite e intensa" },
+  { nome: "Caixa CS Bombons Sortidos M 160g", preco: 89.99, categoria: ["bombons"], emoji: "✨", desc: "Avelã, caramelo com sal e morango" },
+  { nome: "Caixa CS Bombons Sortidos G 300g", preco: 129.99, categoria: ["bombons"], emoji: "🏆", desc: "Versão grande premium" },
+  { nome: "Golden Gift", preco: 59.99, categoria: ["bombons"], emoji: "🏆", desc: "Bombons sortidos 160g" },
+  { nome: "Caixa Bendito Cacao", preco: 64.99, categoria: ["bombons"], emoji: "🌟", desc: "Bombons intenso com nibs 170g" },
+  { nome: "Mini Show Bendito Cacao", preco: 42.49, categoria: ["bombons"], emoji: "✨", desc: "Bombons com trufa intensa 108g" },
+  { nome: "Minishow laCreme ao Leite", preco: 42.49, categoria: ["bombons"], emoji: "🍬", desc: "Bombons com trufa laCreme 108g" },
+  { nome: "Minishow laCreme Mezzo", preco: 42.49, categoria: ["bombons"], emoji: "🍬", desc: "Trufa ao leite e branco 108g" },
+  { nome: "Minishow laCreme Gianduia", preco: 42.49, categoria: ["bombons"], emoji: "🍬", desc: "Recheio creme de avelã 108g" },
+  { nome: "Minishow laCreme Pistache", preco: 42.49, categoria: ["bombons"], emoji: "🍬", desc: "Recheio creme de pistache 108g" },
+  { nome: "Caixa laCreme Sortidos 260g", preco: 109.99, categoria: ["bombons"], emoji: "💝", desc: "Tabletes e bombons laCreme sortidos" },
+  { nome: "Porta-joias Cacau Show", preco: 99.99, categoria: ["bombons", "kits"], emoji: "💎", desc: "Bombons com recheios sortidos 162g" },
+  { nome: "Lata Biscoiteria Sortidos", preco: 84.99, categoria: ["bombons"], emoji: "🍪", desc: "Cookies, biscoitos e wafers 265g" },
+  { nome: "Cubo Brigadeiro", preco: 31.99, categoria: ["bombons"], emoji: "🍫", desc: "Bombons com recheio de brigadeiro 130g" },
+  { nome: "Petit Deli Mil-folhas", preco: 21.29, categoria: ["bombons"], emoji: "✨", desc: "Bombons sabor mil-folhas 78g" },
+  { nome: "Petit Deli Cookies'n Cream", preco: 21.29, categoria: ["bombons"], emoji: "🍪", desc: "Bombons cookies e creme 80g" },
+  { nome: "Petit Deli Brownie", preco: 21.29, categoria: ["bombons"], emoji: "🍫", desc: "Bombons brownie e cookies 79g" },
+  { nome: "Petit Deli Pistache", preco: 21.29, categoria: ["bombons"], emoji: "🌿", desc: "Bombons pistache 78g" },
+  { nome: "Cubo Bless Avelã Zero Açúcar", preco: 39.49, categoria: ["bombons"], emoji: "🌿", desc: "Bombons avelã zero açúcar 145g" },
+  { nome: "Caixa Bless 160g", preco: 64.99, categoria: ["bombons"], emoji: "💙", desc: "Bombons zero lactose/açúcar" },
+  { nome: "Drageado Bless Castanhas e Uvas-passas", preco: 47.99, categoria: ["bombons"], emoji: "🌰", desc: "Zero adição de açúcares 150g" },
+  { nome: "Drageado Bless ao Leite Zero Açúcar", preco: 39.49, categoria: ["bombons"], emoji: "🌿", desc: "Drageados zero açúcar 150g" },
+  
+  // ========== 🍫 TRUFAS ==========
+  { nome: "Mini Trufa laCreme Mezzo", preco: 3.79, categoria: ["trufas"], emoji: "🍬", desc: "Trufa ao leite e branco 13,5g" },
+  { nome: "Trufa laCreme ao Leite", preco: 3.79, categoria: ["trufas"], emoji: "🍬", desc: "Chocolate ao leite 13,5g" },
+  { nome: "Trufa laCreme Gianduia", preco: 3.79, categoria: ["trufas"], emoji: "🍬", desc: "Recheio de avelã 13,5g" },
+  { nome: "Trufa laCreme Chocolate Branco", preco: 3.79, categoria: ["trufas"], emoji: "🍬", desc: "Chocolate branco 13,5g" },
+  { nome: "Trufa laCreme Pistache", preco: 3.79, categoria: ["trufas"], emoji: "🌿", desc: "Recheio de pistache 13,5g" },
+  { nome: "Trufa laCreme Kids ao Leite", preco: 3.79, categoria: ["trufas"], emoji: "🐮", desc: "Recheio sabor leite 13,5g" },
+  { nome: "Trufa 70% Cacau", preco: 3.79, categoria: ["trufas"], emoji: "🍫", desc: "Chocolate intenso 70% 13,5g" },
+  { nome: "Caixa Trufas laCreme 160g", preco: 42.49, categoria: ["trufas"], emoji: "🎁", desc: "Trufas sortidas ao leite e branco" },
+  { nome: "Trufa Clássica Morango", preco: 5.29, categoria: ["trufas"], emoji: "🍓", desc: "Ao leite com morango 30g" },
+  { nome: "Trufa Clássica Maracujá", preco: 5.29, categoria: ["trufas"], emoji: "🍋", desc: "Recheio de maracujá 30g" },
+  { nome: "Trufa Clássica Menta", preco: 5.29, categoria: ["trufas"], emoji: "🌿", desc: "Recheio de menta 30g" },
+  { nome: "Trufa Clássica Coco", preco: 5.29, categoria: ["trufas"], emoji: "🥥", desc: "Recheio de coco 30g" },
+  { nome: "Trufa Clássica Paçoca", preco: 5.29, categoria: ["trufas"], emoji: "🥜", desc: "Recheio de amendoim 30g" },
+  { nome: "Trufa Clássica Tradicional", preco: 5.29, categoria: ["trufas"], emoji: "🍫", desc: "Recheio tradicional 30g" },
+  { nome: "Trufa Clássica Branco", preco: 5.29, categoria: ["trufas"], emoji: "⚪", desc: "Chocolate branco 30g" },
+  { nome: "Trufa Clássica Bendito 55%", preco: 5.29, categoria: ["trufas"], emoji: "🍫", desc: "55% cacau com recheio intenso 30g" },
+  { nome: "Trufa Clássica Mezzo", preco: 5.29, categoria: ["trufas"], emoji: "🍬", desc: "Mesclada leite e branco 30g" },
+  { nome: "Trufa Clássica Torta de Limão", preco: 5.29, categoria: ["trufas"], emoji: "🍋", desc: "Branco com torta de limão 30g" },
+  { nome: "Trufa LaNut Pistache", preco: 6.49, categoria: ["trufas"], emoji: "🌿", desc: "Recheio creme de pistache 30g" },
+  { nome: "Trufa Marula", preco: 6.49, categoria: ["trufas"], emoji: "✨", desc: "Recheio sabor marula 30g" },
+  { nome: "Trufa Nut Avelã", preco: 6.49, categoria: ["trufas"], emoji: "🌰", desc: "Creme de avelã 30g" },
+  { nome: "Trufa Cereja ao Licor", preco: 6.49, categoria: ["trufas"], emoji: "🍒", desc: "Recheio cereja com licor 30g" },
+  { nome: "Trufa Petit Gâteau", preco: 6.49, categoria: ["trufas"], emoji: "🎂", desc: "Sabor petit gâteau 30g" },
+  { nome: "Trufa LaNut Avelã 30g", preco: 6.49, categoria: ["trufas"], emoji: "🌰", desc: "Creme de avelã LaNut 30g" },
+  { nome: "Trufa LaNut Pistache 30g", preco: 6.49, categoria: ["trufas"], emoji: "🌿", desc: "Creme de pistache LaNut 30g" },
+  { nome: "Bless Trufa Branca Zero Açúcar", preco: 6.99, categoria: ["trufas"], emoji: "💙", desc: "Chocolate branco zero açúcar 30g" },
+  { nome: "Bless Trufa Ao Leite Zero Açúcar", preco: 6.99, categoria: ["trufas"], emoji: "💙", desc: "Ao leite zero açúcar 30g" },
+  { nome: "Bless Bombom Avelã Zero Açúcar", preco: 5.29, categoria: ["trufas"], emoji: "💙", desc: "Avelã cremoso 13,5g" },
+  { nome: "Bless Bombom Avelã Zero Lactose", preco: 5.29, categoria: ["trufas"], emoji: "💙", desc: "Avelã zero lactose 13,5g" },
+  { nome: "Bless Bombom Ao Leite Zero Açúcar", preco: 5.29, categoria: ["trufas"], emoji: "💙", desc: "Ao leite zero açúcar 13,5g" },
+  
+  // ========== 🍩 BARRAS / TABLETES / WAFERS / COOKIES ==========
+  // Tabletes 5g (R$ 1,39)
+  { nome: "Tablete laCreme Branco 5g", preco: 1.39, categoria: ["barras"], emoji: "⬜", desc: "Chocolate branco 5g" },
+  { nome: "Tablete laCreme ao Leite 5g", preco: 1.39, categoria: ["barras"], emoji: "🟫", desc: "Chocolate ao leite 5g" },
+  { nome: "Tablete Dark Milk 55% 5g", preco: 1.39, categoria: ["barras"], emoji: "🍫", desc: "55% cacau 5g" },
+  { nome: "Tablete 85% Cacau 5g", preco: 1.39, categoria: ["barras"], emoji: "🍫", desc: "Chocolate intenso 85% 5g" },
+  { nome: "Tablete 70% Cacau 5g", preco: 1.39, categoria: ["barras"], emoji: "🍫", desc: "Chocolate intenso 70% 5g" },
+  { nome: "Tablete Café 5g", preco: 1.39, categoria: ["barras"], emoji: "☕", desc: "Ao leite sabor café 5g" },
+  { nome: "Tablete Menta 5g", preco: 1.39, categoria: ["barras"], emoji: "🌿", desc: "Ao leite sabor menta 5g" },
+  // Tabletes 18g/20g (R$ 5,29)
+  { nome: "Tablete laCreme ao Leite 20g", preco: 5.29, categoria: ["barras"], emoji: "🟫", desc: "Chocolate ao leite cremoso" },
+  { nome: "Tablete laCreme Branco 20g", preco: 5.29, categoria: ["barras"], emoji: "⬜", desc: "Chocolate branco cremoso" },
+  { nome: "Tablete laCreme Mezzo 20g", preco: 5.29, categoria: ["barras"], emoji: "🍬", desc: "Leite e branco 20g" },
+  { nome: "Tablete LaNut 20g", preco: 5.29, categoria: ["barras"], emoji: "🌰", desc: "Ao leite com pasta de avelã" },
+  { nome: "Tablete laCreme Kids 18g", preco: 5.29, categoria: ["barras"], emoji: "🐮", desc: "Ao leite recheio sabor leite" },
+  { nome: "Tablete Bendito Cacao 20g", preco: 5.29, categoria: ["barras"], emoji: "🍫", desc: "55% cacau 20g" },
+  { nome: "Tablete Laranja 20g", preco: 5.29, categoria: ["barras"], emoji: "🍊", desc: "Ao leite sabor laranja" },
+  { nome: "Tablete Castanha-de-caju 20g", preco: 5.29, categoria: ["barras"], emoji: "🌰", desc: "Ao leite com castanha-de-caju" },
+  { nome: "Tablete Crocante 18g", preco: 5.29, categoria: ["barras"], emoji: "🍫", desc: "Ao leite com flocos de arroz" },
+  { nome: "Tablete Pimenta 20g", preco: 5.29, categoria: ["barras"], emoji: "🌶️", desc: "Chocolate ao leite com pimenta" },
+  { nome: "Tablete Ao Leite 20g", preco: 5.29, categoria: ["barras"], emoji: "🟫", desc: "Chocolate ao leite clássico" },
+  // Tabletes 100g laCreme (R$ 21,29)
+  { nome: "Tablete laCreme Duo Intenso 100g", preco: 24.49, categoria: ["barras"], emoji: "🍫", desc: "Ao leite e chocolate intenso" },
+  { nome: "Tablete laCreme Pistache 100g", preco: 24.49, categoria: ["barras"], emoji: "🌿", desc: "Branco com pasta de pistache" },
+  { nome: "Tablete laCreme Gold 100g", preco: 21.29, categoria: ["barras"], emoji: "🟡", desc: "Chocolate branco caramelizado" },
+  { nome: "Tablete laCreme Gianduia 100g", preco: 21.29, categoria: ["barras"], emoji: "🌰", desc: "Ao leite com pasta de avelã" },
+  { nome: "Tablete laCreme Ao Leite 100g", preco: 21.29, categoria: ["barras"], emoji: "🟫", desc: "Chocolate ao leite laCreme" },
+  { nome: "Tablete laCreme Branco 100g", preco: 21.29, categoria: ["barras"], emoji: "⬜", desc: "Chocolate branco laCreme" },
+  { nome: "Tablete laCreme Mezzo 100g", preco: 21.29, categoria: ["barras"], emoji: "🍬", desc: "Leite e branco laCreme" },
+  { nome: "Tablete LaNut Pistache Recheado 130g", preco: 31.99, categoria: ["barras"], emoji: "🌿", desc: "Recheio de pistache" },
+  { nome: "Tablete LaNut Pistache Dubai 130g", preco: 36.99, categoria: ["barras"], emoji: "✨", desc: "Pistache e kataifi" },
+  { nome: "Tablete LaNut Branco 100g", preco: 21.29, categoria: ["barras"], emoji: "⬜", desc: "Branco com pasta de avelã" },
+  { nome: "Tablete Zero Adição Açúcar Ao Leite 100g", preco: 26.49, categoria: ["barras"], emoji: "💙", desc: "laCreme sem açúcar" },
+  { nome: "Tablete Zero Adição Açúcar Branco 100g", preco: 26.49, categoria: ["barras"], emoji: "💙", desc: "Branco sem açúcar" },
+  { nome: "Tablete Zero Lactose Ao Leite 100g", preco: 26.49, categoria: ["barras"], emoji: "💙", desc: "Ao leite sem lactose" },
+  // Bendito Cacao 100g
+  { nome: "Tablete 72% Cacau 100g", preco: 26.49, categoria: ["barras"], emoji: "🍫", desc: "Chocolate intenso 72%" },
+  { nome: "Tablete 86% Cacau 100g", preco: 26.49, categoria: ["barras"], emoji: "🍫", desc: "Chocolate extra intenso 86%" },
+  { nome: "Tablete Dedo de Deus 67% 100g", preco: 26.49, categoria: ["barras"], emoji: "🍫", desc: "67% cacau especial" },
+  { nome: "Tablete Dark Milk 55% 100g", preco: 26.49, categoria: ["barras"], emoji: "🍫", desc: "Ao leite 55% cacau" },
+  { nome: "Tablete Bendito Extra Dark 86% 30g", preco: 12.99, categoria: ["barras"], emoji: "🖤", desc: "Extra dark 86% 30g" },
+  { nome: "Tablete Bendito Dark 72% 30g", preco: 12.99, categoria: ["barras"], emoji: "🍫", desc: "Dark 72% 30g" },
+  { nome: "Tablete 55% Cacau 30g", preco: 5.29, categoria: ["barras"], emoji: "🍫", desc: "55% cacau com trufa intensa" },
+  // Tabletes 100g clássicos
+  { nome: "Tablete Morango 100g", preco: 19.29, categoria: ["barras"], emoji: "🍓", desc: "Ao leite com morango" },
+  { nome: "Tablete Castanha Caramelizada 100g", preco: 19.29, categoria: ["barras"], emoji: "🌰", desc: "Ao leite com castanha caramelizada" },
+  { nome: "Tablete Cookies'n Cream 100g", preco: 19.29, categoria: ["barras"], emoji: "🍪", desc: "Branco com biscoito de chocolate" },
+  // Tabletes Dreams 130g
+  { nome: "Tablete Dreams Mil-folhas Avelã", preco: 26.49, categoria: ["barras"], emoji: "✨", desc: "Ao leite com mil-folhas e avelã" },
+  { nome: "Tablete Dreams Torta de Maracujá", preco: 26.49, categoria: ["barras"], emoji: "🍋", desc: "Ao leite sabor torta de maracujá" },
+  { nome: "Tablete Dreams Crème Brûlée", preco: 26.49, categoria: ["barras"], emoji: "🔥", desc: "Leite e branco sabor crème brûlée" },
+  { nome: "Tablete Dreams Torta de Morango", preco: 26.49, categoria: ["barras"], emoji: "🍰", desc: "Ao leite torta de morango" },
+  { nome: "Tablete Dreams Mil-folhas", preco: 26.49, categoria: ["barras"], emoji: "✨", desc: "Ao leite cremoso mil-folhas" },
+  // Bless Tabletes 20g
+  { nome: "Tablete Bless Branco Zero Açúcar", preco: 6.99, categoria: ["barras"], emoji: "💙", desc: "Branco zero adição açúcar 20g" },
+  { nome: "Tablete Bless 70% Cacau Zero Açúcar", preco: 6.99, categoria: ["barras"], emoji: "💙", desc: "70% cacau zero açúcar 20g" },
+  { nome: "Tablete Bless Ao Leite Zero Açúcar", preco: 6.99, categoria: ["barras"], emoji: "💙", desc: "Ao leite zero açúcar 20g" },
+  { nome: "Tablete Bless Castanha-de-caju Zero Açúcar", preco: 6.99, categoria: ["barras"], emoji: "💙", desc: "Com castanhas 20g" },
+  { nome: "Tablete Bless Ao Leite Zero Lactose", preco: 6.99, categoria: ["barras"], emoji: "💙", desc: "Ao leite sem lactose 20g" },
+  // Miau
+  { nome: "Miau Bless Zero Lactose 70g", preco: 24.49, categoria: ["barras"], emoji: "🐱", desc: "Língua de gato zero lactose" },
+  { nome: "Miau ao Leite 70g", preco: 22.29, categoria: ["barras"], emoji: "🐱", desc: "Língua de gato ao leite" },
+  { nome: "Miau Recheado Leite 70g", preco: 22.29, categoria: ["barras"], emoji: "🐱", desc: "Com recheio de leite" },
+  { nome: "Miau Mezzo 70g", preco: 22.29, categoria: ["barras"], emoji: "🐱", desc: "Leite e branco" },
+  // Biscoitos e Cookies
+  { nome: "Biscoito Tradicional com Chocolate 85g", preco: 13.99, categoria: ["barras"], emoji: "🍪", desc: "Baunilha com base de chocolate" },
+  { nome: "Biscoito Coberto Tradicional 100g", preco: 16.99, categoria: ["barras"], emoji: "🍪", desc: "Coberto com chocolate ao leite" },
+  { nome: "Biscoito Coberto Speculoos 100g", preco: 16.99, categoria: ["barras"], emoji: "🍪", desc: "Sabor especiarias" },
+  { nome: "Drageado Biscoiteria Speculoos 100g", preco: 19.99, categoria: ["barras"], emoji: "🍪", desc: "Biscoito drageado" },
+  { nome: "Cookies Chocolate ao Leite 40g", preco: 11.99, categoria: ["barras"], emoji: "🍪", desc: "Baunilha com gotas de chocolate" },
+  { nome: "Biscoito Coberto Tradicional 50g", preco: 11.99, categoria: ["barras"], emoji: "🍪", desc: "Coberto com chocolate" },
+  { nome: "Cookies Triplo Chocolate 140g", preco: 21.29, categoria: ["barras"], emoji: "🍪", desc: "Sabor chocolate triplo" },
+  { nome: "Cookies de Limão 140g", preco: 21.29, categoria: ["barras"], emoji: "🍋", desc: "Sabor limão com gotas" },
+  { nome: "Cookies com Gotas Chocolate 120g", preco: 18.29, categoria: ["barras"], emoji: "🍪", desc: "Baunilha com gotas" },
+  // Wafers
+  { nome: "Wafer Mil-folhas Coberto 32g", preco: 11.99, categoria: ["barras"], emoji: "🍫", desc: "Recheio mil-folhas coberto" },
+  { nome: "Wafer Avelã Coberto 32g", preco: 11.99, categoria: ["barras"], emoji: "🌰", desc: "Recheio avelã coberto" },
+  { nome: "Wafer Coberto ao Leite 80g", preco: 23.49, categoria: ["barras"], emoji: "🍫", desc: "Cobertos com ao leite" },
+  { nome: "Wafer Recheado Mil-folhas 80g", preco: 16.99, categoria: ["barras"], emoji: "✨", desc: "Recheio mil-folhas" },
+  { nome: "Wafer Recheado LaNut Avelã 80g", preco: 16.99, categoria: ["barras"], emoji: "🌰", desc: "Creme de avelã" },
+  { nome: "Wafer Cacau Recheado Leite 80g", preco: 16.99, categoria: ["barras"], emoji: "🍫", desc: "Cacau com recheio leite" },
+  { nome: "Wafer LaNut Pistache 80g", preco: 19.29, categoria: ["barras"], emoji: "🌿", desc: "Recheio pistache" },
+  // Bytes
+  { nome: "Bytes Ao Leite Crocante 100g", preco: 19.99, categoria: ["barras"], emoji: "🍫", desc: "Drageados crocantes ao leite" },
+  { nome: "Bytes Branco Crocante 100g", preco: 19.99, categoria: ["barras"], emoji: "⚪", desc: "Drageados de chocolate branco" },
+  { nome: "Bytes Amendoim 100g", preco: 19.99, categoria: ["barras"], emoji: "🥜", desc: "Amendoins drageados" },
+  { nome: "Bytes Ao Leite Uva-passa 100g", preco: 19.99, categoria: ["barras"], emoji: "🍇", desc: "Uvas-passas drageadas" },
+  { nome: "Bytes Ao Leite e Branco 100g", preco: 19.99, categoria: ["barras"], emoji: "🍬", desc: "Drageados sortidos" },
+  { nome: "Bytes 3 Chocolates 100g", preco: 19.99, categoria: ["barras"], emoji: "🍫", desc: "Três camadas de chocolate" },
+  { nome: "Flocos de Arroz ao Leite 100g", preco: 18.99, categoria: ["barras"], emoji: "🍚", desc: "Flocos de arroz crocantes" },
+  { nome: "Wafer Avelã 50g", preco: 11.99, categoria: ["barras"], emoji: "🌰", desc: "Tubinhos wafer avelã" },
+  { nome: "Wafer Sintonia 45g", preco: 11.99, categoria: ["barras"], emoji: "🥥", desc: "Castanha-de-caju e canela" },
+  // MonteBello
+  { nome: "MonteBello Tradicional 90g", preco: 17.99, categoria: ["barras"], emoji: "🎩", desc: "Marshmallow tradicional coberto" },
+  { nome: "MonteBello Mousse Maracujá 90g", preco: 17.99, categoria: ["barras"], emoji: "🍋", desc: "Mousse de maracujá" },
+  { nome: "MonteBello Mousse Chocolate 90g", preco: 17.99, categoria: ["barras"], emoji: "🍫", desc: "Mousse de chocolate" },
+  
+  // ========== 🎁 KITS / CAIXAS PRESENTE / CANECAS / ACESSÓRIOS ==========
+  { nome: "Caixa Presente G", preco: 11.99, categoria: ["kits"], emoji: "🎁", desc: "Caixa grande para montar kit" },
+  { nome: "Caixa Presente M", preco: 9.99, categoria: ["kits"], emoji: "🎁", desc: "Caixa média para presente" },
+  { nome: "Caixa Presente P", preco: 7.49, categoria: ["kits"], emoji: "🎁", desc: "Caixa pequena" },
+  { nome: "Cesta laCreme", preco: 274.86, categoria: ["kits"], emoji: "🧺", desc: "Cesta completa com trufas e tabletes" },
+  { nome: "Caneca Grande Marrom", preco: 46.99, categoria: ["kits"], emoji: "☕", desc: "Caneca personalizada para kit" },
+  { nome: "Caneca Grande Creme", preco: 46.99, categoria: ["kits"], emoji: "☕", desc: "Caneca clara para kit" },
+  { nome: "Caneca laCreme Cremilda", preco: 33.99, categoria: ["kits"], emoji: "🐮", desc: "Caneca estilizada Cremilda" },
+  { nome: "Caneca Ryo Creme", preco: 33.99, categoria: ["kits"], emoji: "☕", desc: "Caneca Ryo creme" },
+  { nome: "Caneca Ryo Marrom", preco: 33.99, categoria: ["kits"], emoji: "☕", desc: "Caneca Ryo marrom" },
+  { nome: "Caneca LaNut", preco: 37.49, categoria: ["kits"], emoji: "☕", desc: "Caneca LaNut verde" },
+  { nome: "Caneca Drop", preco: 23.49, categoria: ["kits"], emoji: "☕", desc: "Caneca drop duas cores" },
+  { nome: "Caneca Miau", preco: 31.99, categoria: ["kits"], emoji: "🐱", desc: "Caneca estampada Miau" },
+  { nome: "Caneca Fusion Verde/Goiaba", preco: 41.49, categoria: ["kits"], emoji: "☕", desc: "Caneca colorida fusion" },
+  { nome: "Copo Bendito Cacao Take Away", preco: 42.49, categoria: ["kits"], emoji: "🥤", desc: "Copo térmico take away" },
+  { nome: "Caneca Feliz Hoje", preco: 37.49, categoria: ["kits"], emoji: "☕", desc: "Caneca estilizada duas cores" },
+  { nome: "Caneca Calda de Chocolate", preco: 33.99, categoria: ["kits"], emoji: "☕", desc: "Com calda ao leite/cappuccino/caramelo" },
+  { nome: "Caneca Ursinhos Carinhosos", preco: 39.49, categoria: ["kits"], emoji: "🐻", desc: "Edição especial Ursinhos" },
+  { nome: "Garrafa Térmica CS 500ml", preco: 99.99, categoria: ["kits"], emoji: "🍼", desc: "3 cores disponíveis" },
+  { nome: "Copo Chocolate 710ml", preco: 69.99, categoria: ["kits"], emoji: "🥤", desc: "Copo com canudo" },
+  { nome: "Copo Calda 450ml", preco: 84.99, categoria: ["kits"], emoji: "☕", desc: "Térmico 6 horas" },
+  { nome: "Chaveiro Premium CS", preco: 34.99, categoria: ["kits"], emoji: "🔑", desc: "3 ícones Cacau Show" },
+  { nome: "Chaveiros Sortidos CS", preco: 16.99, categoria: ["kits"], emoji: "🔑", desc: "7 modelos disponíveis" },
+  { nome: "Pins Sortidos CS", preco: 11.99, categoria: ["kits"], emoji: "📌", desc: "7 opções para colecionar" },
+  { nome: "Kit Pins Sortidos CS", preco: 21.99, categoria: ["kits"], emoji: "📌", desc: "Kit com 3 pins" },
+  { nome: "Fondue 250g", preco: 59.99, categoria: ["kits"], emoji: "🍫", desc: "Creme de chocolate para fondue" },
+  { nome: "Cartão Trufa 13,5g", preco: 2.99, categoria: ["kits"], emoji: "💌", desc: "Cartão Gratidão/Te Amo/Parabéns" },
+  { nome: "Chocoarte Te Amo 40g", preco: 16.99, categoria: ["kits"], emoji: "💕", desc: "Tablete decorado" },
+  { nome: "Chocoarte Gratidão 40g", preco: 16.99, categoria: ["kits"], emoji: "💕", desc: "Tablete decorado" },
+  { nome: "Chocoarte Parabéns 40g", preco: 16.99, categoria: ["kits"], emoji: "🎉", desc: "Tablete decorado" },
+  
+  // ========== 📅 DATAS ESPECIAIS / EDIÇÕES LIMITADAS ==========
+  { nome: "Caneca Butterbeer Harry Potter 480ml", preco: 89.99, categoria: ["datas"], emoji: "🪄", desc: "Edição limitada 25 anos Harry Potter" },
+  { nome: "Tablete Butterbeer Harry Potter 18g", preco: 5.29, categoria: ["datas"], emoji: "🪄", desc: "Cerveja amanteigada sabor manteiga" },
+  { nome: "Trufa Butterbeer Harry Potter 13,5g", preco: 3.79, categoria: ["datas"], emoji: "🪄", desc: "Recheio manteiga e caramelo" },
+  { nome: "Caixa Brasões Hogwarts 140g", preco: 57.99, categoria: ["datas"], emoji: "🏰", desc: "Brasões de chocolate" },
+  { nome: "Tablete Harry Potter Brasão 54g", preco: 16.99, categoria: ["datas"], emoji: "🪄", desc: "Chocolate com card exclusivo" },
+  { nome: "Biscoito Harry Potter 100g", preco: 16.99, categoria: ["datas"], emoji: "🍪", desc: "Biscoito com chocolate ao leite" },
+  { nome: "Tablete Mil-folhas Avelã Premiado", preco: 26.49, categoria: ["datas"], emoji: "🎫", desc: "Cacau Park - Bilhete premiado" },
+  { nome: "Tablete Mil-folhas Premiado", preco: 26.49, categoria: ["datas"], emoji: "🎫", desc: "Bilhete premiado Cacau Park" },
+  { nome: "Tablete Pistache Premiado", preco: 31.99, categoria: ["datas"], emoji: "🎫", desc: "Pistache - Bilhete premiado" },
+  { nome: "Tablete Speculoos Premiado", preco: 26.49, categoria: ["datas"], emoji: "🎫", desc: "Speculoos - Bilhete premiado" },
+  { nome: "Tablete Torta de Morango Premiado", preco: 26.49, categoria: ["datas"], emoji: "🎫", desc: "Torta de morango premiado" }
+];
+
+let categoriaAtual = 'todos';
+
+function renderizarProdutos(lista) {
+  const grid = document.getElementById('productsGrid');
+  const contador = document.getElementById('contador');
+  
+  contador.textContent = `${lista.length} produtos encontrados`;
+  
+  if (lista.length === 0) {
+    grid.innerHTML = '<div class="empty-message"><p class="text-xl">😔 Nenhum produto encontrado</p><p class="mt-2">Tente outra busca ou categoria</p></div>';
+    return;
+  }
+  
+  grid.innerHTML = lista.map(p => {
+    const ehMae = p.categoria.includes('maes');
+    const ehData = p.categoria.includes('datas');
+    return `
+      <div class="product-card">
+        ${ehMae ? '<span class="tag-maes">💝 MÃES</span>' : ''}
+        ${ehData ? '<span class="tag-especial">EDIÇÃO ESPECIAL</span>' : ''}
+        <div class="product-image">
+          <span>${p.emoji}</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${p.nome}</h3>
+          <p class="product-desc">${p.desc || ''}</p>
+          <p class="product-price">R$ ${p.preco.toFixed(2).replace('.', ',')}</p>
+          <a href="https://wa.me/5511940277555?text=Ol%C3%A1%20Pedro%21%20Quero%20encomendar%3A%0A%F0%9F%8D%AB%20${encodeURIComponent(p.nome)}%20-%20R%24%20${p.preco.toFixed(2).replace('.', ',')}%0AAguardo%20seu%20retorno%21" 
+             class="product-btn" target="_blank">
+            📱 Pedir no WhatsApp
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filtrarCategoria(categoria, btn) {
+  categoriaAtual = categoria;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filtrarProdutos();
+}
+
+function filtrarProdutos() {
+  const busca = document.getElementById('searchInput').value.toLowerCase();
+  let filtrados = produtos;
+  
+  if (categoriaAtual !== 'todos') {
+    filtrados = filtrados.filter(p => p.categoria.includes(categoriaAtual));
+  }
+  
+  if (busca) {
+    filtrados = filtrados.filter(p => 
+      p.nome.toLowerCase().includes(busca) || 
+      (p.desc && p.desc.toLowerCase().includes(busca))
+    );
+  }
+  
+  renderizarProdutos(filtrados);
+}
+
+renderizarProdutos(produtos);
+</script>
+
+</body>
+</html>
