@@ -1,419 +1,319 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Things Store | Cacau Show Premium em Mogi das Cruzes</title>
-<meta name="description" content="Revendedora oficial Cacau Show em Mogi das Cruzes. +140 produtos premium, entrega rápida pelo WhatsApp!">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-  * { scroll-behavior: smooth; }
-  body { font-family: 'Poppins', sans-serif; background: #1a0f08; color: #f5e6d3; margin: 0; overflow-x: hidden; }
-  .font-elegant { font-family: 'Playfair Display', serif; }
-  
-  .text-gold { color: #d4a574; }
-  .text-gold-light { color: #e8c89a; }
-  .bg-dark-choco { background: #1a0f08; }
-  .bg-choco { background: #3e1f0d; }
-  
-  .menu-float {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 50;
-    display: flex;
-    gap: 40px;
-    padding: 15px 40px;
-    backdrop-filter: blur(10px);
-    background: rgba(26, 15, 8, 0.3);
-    border: 1px solid rgba(212, 165, 116, 0.2);
-    border-radius: 50px;
-  }
-  .menu-float a {
-    color: #f5e6d3;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    transition: 0.3s;
-  }
-  .menu-float a:hover { color: #d4a574; }
-  
-  @media (max-width: 640px) {
-    .menu-float { gap: 12px; padding: 10px 20px; top: 15px; }
-    .menu-float a { font-size: 11px; letter-spacing: 1px; }
-  }
-  
-  .hero { 
-    position: relative; 
-    height: 100vh; 
-    min-height: 600px;
-    overflow: hidden;
-  }
-  .hero-image {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.7);
-  }
-  .hero-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    width: 90%;
-  }
-  .hero-title h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    color: #d4a574;
-    font-size: clamp(3rem, 10vw, 8rem);
-    text-shadow: 3px 3px 30px rgba(0,0,0,0.9);
-    letter-spacing: 2px;
-    line-height: 0.95;
-  }
-  .hero-btn {
-    margin-top: 40px;
-    display: inline-block;
-    background: linear-gradient(135deg, #d4a574, #b8894f);
-    color: #1a0f08;
-    padding: 18px 45px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
-    box-shadow: 0 10px 40px rgba(212, 165, 116, 0.4);
-    transition: 0.3s;
-  }
-  .hero-btn:hover { transform: translateY(-3px); }
-  
-  .balde-container {
-    position: fixed;
-    top: 90px;
-    left: 20px;
-    z-index: 40;
-    pointer-events: none;
-  }
-  .balde { font-size: 48px; transform: rotate(-25deg); }
-  .choco-drop {
-    position: absolute;
-    font-size: 24px;
-    animation: cair 3s infinite linear;
-    opacity: 0;
-  }
-  @keyframes cair {
-    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translate(30px, 80vh) rotate(720deg); opacity: 0; }
-  }
-  .c1 { top: 30px; left: 30px; animation-delay: 0s; }
-  .c2 { top: 30px; left: 30px; animation-delay: 0.6s; }
-  .c3 { top: 30px; left: 30px; animation-delay: 1.2s; }
-  .c4 { top: 30px; left: 30px; animation-delay: 1.8s; }
-  .c5 { top: 30px; left: 30px; animation-delay: 2.4s; }
-  
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    color: #d4a574;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  .divider {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #d4a574, transparent);
-    margin: 0 auto 50px;
-  }
-  
-  .product-card {
-    background: linear-gradient(135deg, #2a1810, #3e1f0d);
-    border: 1px solid rgba(212, 165, 116, 0.3);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: 0.4s;
-    position: relative;
-  }
-  .product-card:hover {
-    transform: translateY(-10px);
-    border-color: #d4a574;
-    box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
-  }
-  .product-placeholder {
-    height: 220px;
-    background: linear-gradient(135deg, #6b3410, #3e1f0d);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-  }
-  .tag-novo {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #d4a574;
-    color: #1a0f08;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    z-index: 2;
-  }
-  
-  .btn-outline {
-    display: inline-block;
-    color: #d4a574;
-    border: 1px solid #d4a574;
-    padding: 14px 32px;
-    border-radius: 50px;
-    transition: 0.3s;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-  .btn-outline:hover {
-    background: #d4a574;
-    color: #1a0f08;
-  }
-  
-  .wpp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #25d366;
-    color: white;
-    padding: 16px;
-    border-radius: 50%;
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-    z-index: 100;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Things Store — Chocolates Cacau Show | Revenda Premium</title>
+  <meta name="description" content="Revenda autorizada Cacau Show. Os melhores chocolates artesanais para todas as ocasiões.">
+  <meta name="theme-color" content="#1A0F08">
+  <meta property="og:title" content="All Things Store — Chocolates Premium">
+  <meta property="og:description" content="Os melhores chocolates Cacau Show com entrega rápida e atendimento personalizado.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="balde-container">
-  <div class="balde">🪣</div>
-  <div class="choco-drop c1">🍫</div>
-  <div class="choco-drop c2">🍬</div>
-  <div class="choco-drop c3">🍫</div>
-  <div class="choco-drop c4">🍩</div>
-  <div class="choco-drop c5">🍫</div>
+<header class="header">
+  <div class="header-inner">
+    <a href="#inicio" class="logo">
+      All Things Store
+      <span class="logo-sub">Revenda Cacau Show</span>
+    </a>
+    <nav class="nav" id="navMenu">
+      <a href="#favoritos">Favoritos</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#catalogo">Catálogo</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="cartBtn" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="videos/hero-chocolates.mp4" type="video/mp4">
+  </video>
+  <span class="hero-tag">Sobre Nós</span>
+  <h1>Bem-vindo à <em>All Things Store</em></h1>
+  <p class="hero-sub">Somos uma revenda autorizada Cacau Show comprometida em transformar cada presente em uma experiência memorável. Selecionamos cuidadosamente os melhores chocolates artesanais para você surpreender quem ama, celebrar momentos especiais e adoçar o dia a dia com a qualidade e tradição de uma das marcas mais queridas do Brasil. Atendimento próximo, entrega rápida e a certeza de que cada bombom carrega um pedacinho do nosso carinho.</p>
+  <div class="hero-actions">
+    <button class="btn btn-primary" id="catalogBtnHero">Solicitar Catálogo</button>
+    <a href="#favoritos" class="btn btn-outline">Ver Favoritos</a>
+  </div>
+</section>
+
+<div class="chocolate-drip">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,20 Q60,45 120,25 Q180,10 240,30 Q300,55 360,28 Q420,12 480,35 Q540,50 600,22 Q660,8 720,32 Q780,52 840,25 Q900,10 960,30 Q1020,48 1080,20 Q1140,5 1200,28 Q1260,50 1320,22 Q1380,10 1440,30 L1440,0 Z" fill="#3A2418"/>
+    <path d="M120,25 Q125,40 122,55 M360,28 Q358,45 362,58 M600,22 Q605,38 600,52 M840,25 Q843,42 840,56 M1080,20 Q1085,38 1082,55 M1320,22 Q1318,40 1322,55" stroke="#3A2418" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
 </div>
 
-<section id="inicio" class="hero">
-  <div class="hero-image" style="background-image: url('https://i.ibb.co/h1Xsnsf3/gemini-2-5-flash-image-Tire-os-texto-das-fotos-e-coloque-algumas-no-lugas-dos-bobom-plus-ns-0.jpg');"></div>
-  
-  <nav class="menu-float">
-    <a href="#inicio">Início</a>
-    <a href="produtos.html">Produtos</a>
-    <a href="produtos.html">Kits</a>
-    <a href="#contato">Contato</a>
-  </nav>
-  
-  <div class="hero-title">
-    <h1>All Things<br>Store</h1>
-    <a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20quero%20ver%20o%20cat%C3%A1logo" class="hero-btn">
-      🍫 Ver Catálogo
-    </a>
+<section class="favorites" id="favoritos">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">⭐ Favoritos da Casa</span>
+      <h2>Nossos <em>queridinhos</em></h2>
+      <p>Os mais pedidos e amados pelos nossos clientes — uma seleção especial pra você experimentar o melhor.</p>
+    </div>
+    <div class="favorites-grid" id="favoritesGrid"></div>
   </div>
 </section>
 
-<section id="campanha-maes" class="py-24 px-6 bg-dark-choco">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-4">
-      <span class="text-gold text-sm tracking-widest uppercase">💝 Edição Especial</span>
+<div class="chocolate-drip">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,20 Q60,45 120,25 Q180,10 240,30 Q300,55 360,28 Q420,12 480,35 Q540,50 600,22 Q660,8 720,32 Q780,52 840,25 Q900,10 960,30 Q1020,48 1080,20 Q1140,5 1200,28 Q1260,50 1320,22 Q1380,10 1440,30 L1440,0 Z" fill="#1F100A"/>
+    <path d="M120,25 Q125,40 122,55 M360,28 Q358,45 362,58 M600,22 Q605,38 600,52 M840,25 Q843,42 840,56 M1080,20 Q1085,38 1082,55 M1320,22 Q1318,40 1322,55" stroke="#1F100A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<section id="produtos">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Coleção Completa</span>
+      <h2>Sabores que <em>encantam</em></h2>
+      <p>Cada peça é uma experiência. Explore nossa seleção de bombons, tabletes, trufas e presentes especiais.</p>
     </div>
-    <h2 class="section-title">Campanha Dia das Mães</h2>
-    <div class="divider"></div>
-    <p class="text-center text-gold-light mb-16 max-w-2xl mx-auto">
-      Presentes únicos para quem merece o mundo. Caixas especiais, embalagens exclusivas e o sabor inesquecível da Cacau Show.
-    </p>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="product-card">
-        <div class="product-placeholder">🎁</div>
-        <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Caixa Artesanal</h3>
-          <p class="text-gold-light text-sm mb-4">Delícias de Amor 153g</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-placeholder">💝</div>
-        <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Caixa Angel Premium</h3>
-          <p class="text-gold-light text-sm mb-4">Coleção Sortidos 290g</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-placeholder">🌹</div>
-        <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Botão de Rosa</h3>
-          <p class="text-gold-light text-sm mb-4">Bombom recheado Angel</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
-        </div>
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+    </div>
+
+    <div class="filter-group">
+      <h4 class="filter-label">Filtrar por Linha</h4>
+      <div class="filters" id="filters"></div>
+    </div>
+
+    <div class="filter-group">
+      <h4 class="filter-label">Filtrar por Preço</h4>
+      <div class="filters" id="priceFilters">
+        <button class="filter-btn active" data-price="all">Todos</button>
+        <button class="filter-btn" data-price="low">Até R$ 50</button>
+        <button class="filter-btn" data-price="mid">R$ 50 a R$ 100</button>
+        <button class="filter-btn" data-price="high">Acima de R$ 100</button>
       </div>
     </div>
-    
-    <div class="text-center mt-12">
-      <a href="produtos.html" class="btn-outline">Ver todos os produtos de Mães →</a>
-    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
   </div>
 </section>
 
-<section id="novidades" class="py-24 px-6 bg-choco">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-4">
-      <span class="text-gold text-sm tracking-widest uppercase">✨ Recém-chegados</span>
-    </div>
-    <h2 class="section-title">Novidades</h2>
-    <div class="divider"></div>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="product-card">
-        <span class="tag-novo">NOVO</span>
-        <div class="product-placeholder">🪄</div>
-        <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Linha Harry Potter</h3>
-          <p class="text-gold-light text-sm mb-4">25 anos - Edição limitada</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <span class="tag-novo">NOVO</span>
-        <div class="product-placeholder">🎫</div>
-        <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">Dreams Premiado</h3>
-          <p class="text-gold-light text-sm mb-4">Cacau Park - Bilhete premiado</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <span class="tag-novo">NOVO</span>
-        <div class="product-placeholder">🌿</div>
-        <div class="p-6 text-center">
-          <h3 class="font-elegant text-2xl text-gold mb-2">LaNut Pistache Dubai</h3>
-          <p class="text-gold-light text-sm mb-4">Creme de pistache e kataifi</p>
-          <a href="https://wa.me/5511940277555" class="text-gold text-sm hover:underline">Consultar →</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="text-center mt-12">
-      <a href="produtos.html" class="btn-outline">Ver catálogo completo →</a>
-    </div>
-  </div>
-</section>
+<div class="chocolate-drip">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,20 Q60,45 120,25 Q180,10 240,30 Q300,55 360,28 Q420,12 480,35 Q540,50 600,22 Q660,8 720,32 Q780,52 840,25 Q900,10 960,30 Q1020,48 1080,20 Q1140,5 1200,28 Q1260,50 1320,22 Q1380,10 1440,30 L1440,0 Z" fill="#3A2418"/>
+    <path d="M120,25 Q125,40 122,55 M360,28 Q358,45 362,58 M600,22 Q605,38 600,52 M840,25 Q843,42 840,56 M1080,20 Q1085,38 1082,55 M1320,22 Q1318,40 1322,55" stroke="#3A2418" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
 
-<section class="py-24 px-6 bg-dark-choco">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="section-title">Por que escolher a All Things</h2>
-    <div class="divider"></div>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="text-center p-8 rounded-2xl bg-choco border border-gold border-opacity-30">
-        <div class="text-6xl mb-4">🚚</div>
-        <h3 class="font-elegant text-2xl text-gold mb-3">Entrega Rápida</h3>
-        <p class="text-gold-light">Entregas em Mogi das Cruzes e região em até 2 horas.</p>
+<section class="benefits">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Vantagens</span>
+      <h2>Por que comprar <em>conosco</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <h3>Produtos Originais</h3>
+        <p>Revenda autorizada Cacau Show com garantia de qualidade</p>
       </div>
-      <div class="text-center p-8 rounded-2xl bg-choco border border-gold border-opacity-30">
-        <div class="text-6xl mb-4">💳</div>
-        <h3 class="font-elegant text-2xl text-gold mb-3">Pagamento Fácil</h3>
-        <p class="text-gold-light">PIX, cartão ou dinheiro. A forma que for melhor pra você.</p>
+      <div class="benefit reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>Atendimento Próximo</h3>
+        <p>Tire dúvidas e faça pedidos diretamente pelo WhatsApp</p>
       </div>
-      <div class="text-center p-8 rounded-2xl bg-choco border border-gold border-opacity-30">
-        <div class="text-6xl mb-4">⭐</div>
-        <h3 class="font-elegant text-2xl text-gold mb-3">Qualidade Premium</h3>
-        <p class="text-gold-light">Produtos oficiais Cacau Show, fresquinhos e bem embalados.</p>
+      <div class="benefit reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg></div>
+        <h3>Para Toda Ocasião</h3>
+        <p>Presentes corporativos, datas especiais e momentos íntimos</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+        <h3>Pagamento Seguro</h3>
+        <p>Combinado diretamente conosco com total transparência</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-24 px-6 bg-choco">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="section-title">O que nossos clientes dizem</h2>
-    <div class="divider"></div>
-    
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-8 bg-dark-choco rounded-2xl border border-gold border-opacity-20">
-        <div class="text-gold text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-        <p class="italic text-gold-light mb-4">"Atendimento top e chegou super rápido! Os bombons estavam frescos e deliciosos."</p>
-        <p class="font-elegant text-gold">— Juliana M.</p>
+<div class="chocolate-drip">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,20 Q60,45 120,25 Q180,10 240,30 Q300,55 360,28 Q420,12 480,35 Q540,50 600,22 Q660,8 720,32 Q780,52 840,25 Q900,10 960,30 Q1020,48 1080,20 Q1140,5 1200,28 Q1260,50 1320,22 Q1380,10 1440,30 L1440,0 Z" fill="#1A0F08"/>
+    <path d="M120,25 Q125,40 122,55 M360,28 Q358,45 362,58 M600,22 Q605,38 600,52 M840,25 Q843,42 840,56 M1080,20 Q1085,38 1082,55 M1320,22 Q1318,40 1322,55" stroke="#1A0F08" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<section class="testimonials" id="avaliacoes">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Avaliações</span>
+      <h2>O que nossos <em>clientes</em> dizem</h2>
+      <p>Histórias reais de quem já presenteou e foi presenteado conosco.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Comprei a Caixa Angel pra dar pra minha mãe no Dia das Mães e ela amou! O atendimento foi super atencioso, me ajudaram a escolher a melhor opção. Chegou tudo certinho e bem embalado."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <strong>Mariana Silva</strong>
+            <span>São Paulo, SP</span>
+          </div>
+        </div>
       </div>
-      <div class="p-8 bg-dark-choco rounded-2xl border border-gold border-opacity-20">
-        <div class="text-gold text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-        <p class="italic text-gold-light mb-4">"Pedi presente de aniversário pra minha mãe. Ela amou a caixa, veio perfeita!"</p>
-        <p class="font-elegant text-gold">— Rafael C.</p>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Já é a terceira vez que peço aqui. Sempre fresquinho, entrega rápida e o atendimento pelo WhatsApp é nota dez. Recomendo demais pra quem quer presentear com elegância."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <strong>Rafael Mendes</strong>
+            <span>Mogi das Cruzes, SP</span>
+          </div>
+        </div>
       </div>
-      <div class="p-8 bg-dark-choco rounded-2xl border border-gold border-opacity-20">
-        <div class="text-gold text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-        <p class="italic text-gold-light mb-4">"Compro toda semana. Preço justo e sempre tem novidade. Recomendo demais!"</p>
-        <p class="font-elegant text-gold">— Ana P.</p>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Encomendei caixas personalizadas pros clientes da minha empresa no fim de ano. Resultado impecável! Todo mundo elogiou e vou fechar pacote pro próximo Natal também."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div>
+            <strong>Carolina Ferraz</strong>
+            <span>Empresária</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Os bombons da linha laCreme são meu vício! Atendimento humanizado, sempre dão dicas dos lançamentos. Virei cliente fiel da All Things Store."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div>
+            <strong>Juliana Costa</strong>
+            <span>Guarulhos, SP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Pedi um kit pra surpreender minha namorada no aniversário. Veio com cartão personalizado, embalagem linda. Ela amou! Voltarei sempre."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">L</div>
+          <div>
+            <strong>Lucas Almeida</strong>
+            <span>São Paulo, SP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Atendimento excepcional! Tinham paciência de mostrar várias opções até eu escolher. Os Dreams premiados são divinos. Chocolate de qualidade com preço justo."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <strong>Patrícia Oliveira</strong>
+            <span>Suzano, SP</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contato" class="py-24 px-6 bg-dark-choco">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="section-title">Fale Conosco</h2>
-    <div class="divider"></div>
-    <p class="text-gold-light mb-12 text-lg">Entre em contato e descubra todo o nosso catálogo.</p>
-    
-    <div class="grid md:grid-cols-2 gap-6">
-      <a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20vim%20pelo%20site" 
-         class="flex items-center justify-center gap-4 p-6 bg-choco rounded-2xl border border-gold border-opacity-30 hover:border-opacity-100 transition">
-        <div class="text-5xl">📱</div>
-        <div class="text-left">
-          <p class="text-sm text-gold-light">WhatsApp</p>
-          <p class="font-elegant text-2xl text-gold">(11) 94027-7555</p>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/store_all.things/" target="_blank"
-         class="flex items-center justify-center gap-4 p-6 bg-choco rounded-2xl border border-gold border-opacity-30 hover:border-opacity-100 transition">
-        <div class="text-5xl">📸</div>
-        <div class="text-left">
-          <p class="text-sm text-gold-light">Instagram</p>
-          <p class="font-elegant text-2xl text-gold">@store_all.things</p>
-        </div>
-      </a>
-    </div>
+<div class="chocolate-drip">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,20 Q60,45 120,25 Q180,10 240,30 Q300,55 360,28 Q420,12 480,35 Q540,50 600,22 Q660,8 720,32 Q780,52 840,25 Q900,10 960,30 Q1020,48 1080,20 Q1140,5 1200,28 Q1260,50 1320,22 Q1380,10 1440,30 L1440,0 Z" fill="#3A2418"/>
+    <path d="M120,25 Q125,40 122,55 M360,28 Q358,45 362,58 M600,22 Q605,38 600,52 M840,25 Q843,42 840,56 M1080,20 Q1085,38 1082,55 M1320,22 Q1318,40 1322,55" stroke="#3A2418" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<section class="catalog-cta" id="catalogo">
+  <div class="catalog-inner">
+    <span class="section-tag">Catálogo Completo</span>
+    <h2>Receba nosso catálogo <em>completo</em></h2>
+    <p>Mais de 200 produtos selecionados para você presentear ou se deliciar. Solicite agora pelo WhatsApp e atendimento personalizado.</p>
+    <button class="btn btn-gold" id="catalogBtn">Solicitar pelo WhatsApp</button>
   </div>
 </section>
 
-<footer class="py-12 px-6 bg-black text-center">
-  <h3 class="font-elegant text-3xl text-gold mb-2">All Things Store</h3>
-  <p class="text-gold-light text-sm mb-4">Chocolates Cacau Show • Mogi das Cruzes - SP</p>
-  <div class="flex justify-center gap-6 mb-6">
-    <a href="https://wa.me/5511940277555" class="text-gold-light hover:text-gold transition">WhatsApp</a>
-    <a href="https://www.instagram.com/store_all.things/" target="_blank" class="text-gold-light hover:text-gold transition">Instagram</a>
-    <a href="produtos.html" class="text-gold-light hover:text-gold transition">Catálogo</a>
+</main>
+
+<footer id="contato">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>All Things Store</h3>
+        <p>Revenda autorizada Cacau Show. Os melhores chocolates artesanais para todos os momentos especiais.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#favoritos">Favoritos</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5511940277555" target="_blank">WhatsApp: (11) 94027-7555</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 All Things Store · Revenda autorizada Cacau Show</p>
+    </div>
   </div>
-  <p class="text-xs text-gold-light opacity-60">© 2026 All Things Store. Todos os direitos reservados.</p>
 </footer>
 
-<a href="https://wa.me/5511940277555?text=Ol%C3%A1%2C%20vim%20pelo%20site" class="wpp-float">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-  </svg>
+<a href="https://wa.me/5511940277555?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.88 11.91L4 20l4.2-1.1a7.93 7.93 0 003.84.98h.01a7.95 7.95 0 007.94-7.94 7.9 7.9 0 00-2.39-5.62zM12.05 18.5h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 01-1.01-3.5c0-3.64 2.97-6.6 6.61-6.6a6.55 6.55 0 014.66 1.94 6.55 6.55 0 011.92 4.66 6.61 6.61 0 01-6.59 6.58zm3.62-4.93c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.45.1-.13.2-.51.65-.62.78-.12.13-.23.15-.42.05-.2-.1-.84-.31-1.59-.99-.59-.52-.99-1.17-1.1-1.36-.12-.2-.01-.3.09-.4.09-.1.2-.23.3-.35.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.32-.34-.45-.35h-.39c-.13 0-.34.05-.52.25s-.69.67-.69 1.64c0 .96.7 1.9.8 2.02.1.13 1.39 2.12 3.36 2.97.47.2.84.33 1.12.42.47.15.9.13 1.24.08.38-.06 1.18-.48 1.34-.95.17-.46.17-.86.12-.95-.05-.08-.18-.13-.38-.23z"/></svg>
 </a>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Seu Carrinho</h3>
+    <button class="cart-close" id="cartClose" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <button class="cart-checkout" id="cartCheckout" disabled>Finalizar pelo WhatsApp</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/products.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
